@@ -1,0 +1,16 @@
+{% extends "testForm/layout.html" %}
+
+{% block body %}
+
+<form action="{% url 'addUser' %}" method="POST" class="form-group">
+{% csrf_token %}
+<input type="text" id="name" name="name" placeholder="Name">
+<button type="submit" class="btn btn-primary" style="margin: 5px;">ADD</button>
+</form>
+
+{% for user in users %}
+<h5>{{user.name}}</h5>
+{% empty %}
+<h3 style="color: darkgrey;">Listings are currently unavailable</h3>
+{% endfor %}
+{% endblock %}
